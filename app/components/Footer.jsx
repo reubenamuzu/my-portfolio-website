@@ -46,7 +46,7 @@ const Footer = ({isDarkMode}) => {
       <div className="text-center sm:flex items-center justify-center border-t border-gray-400 mx-[10%] mt-6 py-6">
         <p>
           {" "}
-          © {new Date().getFullYear()} Reuben Korsi Amuzu. All rights reserved.{" "}
+          © {new Date().getFullYear()} Reuben Korsi Amuzu. All rights reserved.
         </p>
       </div>
     </div>

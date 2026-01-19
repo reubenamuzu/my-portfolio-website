@@ -60,7 +60,7 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
           </li>
           <li>
             <a className="font-Ovo" href="#about">
-              About me
+              About Me
             </a>
           </li>
           <li>

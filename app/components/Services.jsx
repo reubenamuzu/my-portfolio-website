@@ -62,7 +62,7 @@ const Services = () => {
             </p>
             <a href={link} className="flex items-center gap-2 text-sm mt-5">
               {/* Remember go to the assets.js to add the link in the serviceData array */}
-              Read more{" "}
+              Read more
               <Image src={assets.right_arrow} alt="" className="w-4" />
             </a>
           </motion.div>
