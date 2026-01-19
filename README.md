@@ -8,55 +8,67 @@ I am a creative and detail-driven Software Developer with two years of experienc
 
 ## Built With
 
-*   [Next.js](https://nextjs.org/) - React framework for production
-*   [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-*   [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-*   [Motion](https://motion.dev/) - A new animation library for React.
+- [Next.js](https://nextjs.org/) – React framework for production
+- [React](https://reactjs.org/) – A JavaScript library for building user interfaces
+- [Tailwind CSS](https://tailwindcss.com/) – A utility-first CSS framework
+- [Motion](https://motion.dev/) – A new animation library for React
 
 ## Services Offered
 
-*   **Web Design:** Responsive web development with modern tools and clean UI.
-*   **Mobile App:** Cross-platform mobile apps with smooth performance and API support.
-*   **UI/UX Design:** User-focused interface design and interactive prototypes.
-*   **Graphics Design:** Creative visuals, branding, and digital marketing graphics.
+- **Web Design:** Responsive web development with modern tools and clean UI
+- **Mobile App:** Cross-platform mobile apps with smooth performance and API support
+- **UI/UX Design:** User-focused interface design and interactive prototypes
+- **Graphics Design:** Creative visuals, branding, and digital marketing graphics
 
 ## Tools I Use
 
-*   VS Code
-*   Firebase
-*   MongoDB
-*   Figma
-*   Git
-*   Postman
+- VS Code
+- Firebase
+- MongoDB
+- Figma
+- Git
+- Postman
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-*   npm
-    ```sh
-    npm install npm@latest -g
-    ```
+- npm
+```sh
+npm install npm@latest -g
+Installation
+Clone the repo
 
-### Installation
+sh
+Copy code
+git clone https://github.com/Amson-tECH/my-portfolio-website.git
+Install dependencies
 
-1.  Clone the repo
-    ```sh
-    git clone https://github.com/Amson-tECH/my-portfolio-website.git
-    ```
-2.  Install NPM packages
-    ```sh
-    npm install
-    ```
-3.  Run the app
-    ```sh
-    npm run dev
-    ```
+sh
+Copy code
+npm install
+Run the app
 
-## Contact
+sh
+Copy code
+npm run dev
+Contact
+Reuben Korsi Amuzu
+📧 amuuzureuben@gmail.com
 
-Reuben Korsi Amuzu - amuuzureuben@gmail.com
+Project Link:
+https://github.com/Amson-tECH/my-portfolio-website.git
 
-Project Link: [https://github.com/Amson-tECH/my-portfolio-website.git](https://github.com/your_username_/Project-Name)
+yaml
+Copy code
+
+---
+
+## 🛠️ Now run these Git commands (IN ORDER)
+
+```bash
+git add README.md
+git commit -m "Resolve README merge conflict"
+git push origin main
