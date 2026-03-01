@@ -1,10 +1,21 @@
 "use client";
 import { assets } from "@/assets/assets";
+import { Button } from "@/app/components/ui/button";
 import Image from "next/image";
 import React from "react";
 import { motion } from "motion/react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/app/components/ui/dialog";
 
-const Header = () => {
+const Header = ({ isDarkMode }) => {
   return (
     <div className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
       <motion.div
@@ -50,17 +61,41 @@ const Header = () => {
           contact me
           <Image src={assets.right_arrow_white} alt="" className="w-4" />
         </motion.a>
-        <motion.a
+
+        {/* ✅ Replaced motion.a with motion.div — Dialog cannot live inside an <a> tag */}
+        <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          href="/sample-resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 bg-white dark:text-black"
         >
-          my resume <Image src={assets.download_icon} alt="" className="w-4" />
-        </motion.a>
+          <Dialog>
+            <DialogTrigger className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 bg-white dark:text-black cursor-pointer">
+              my resume
+              {/* ✅ Image must be a sibling of the text, not wrapped separately */}
+              <Image src={assets.download_icon} alt="" className="w-4" />
+            </DialogTrigger>
+            <DialogContent className="dark:bg-darkTheme">
+              <DialogHeader>
+                <DialogTitle>Want My Resume?</DialogTitle>
+              </DialogHeader>
+              <DialogDescription className="font-Ovo text-lg text-gray-900 dark:text-gray-300">
+                Thank you for your interest in my work. Reach out to me directly
+                via email or phone to get a copy of my resume and discuss
+                potential opportunities.
+              </DialogDescription>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button
+                    variant="outline"
+                    className="bg-black text-white dark:bg-white dark:text-black rounded-lg hover:bg-gray-800 hover:text-white dark:hover:bg-gray-300 dark:hover:text-black transition-colors duration-300"
+                  >
+                    <a href="#contact">Contact me</a>
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </motion.div>
       </div>
     </div>
   );

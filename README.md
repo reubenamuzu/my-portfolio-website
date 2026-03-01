@@ -43,7 +43,7 @@ Clone the repo
 
 sh
 Copy code
-git clone https://github.com/Amson-tECH/my-portfolio-website.git
+git clone https://github.com/reubenamuzu/my-portfolio-website.git
 Install dependencies
 
 sh
@@ -56,10 +56,10 @@ Copy code
 npm run dev
 Contact
 Reuben Korsi Amuzu
-📧 amuuzureuben@gmail.com
+📧 reubenamuzu23@gmail.com
 
 Project Link:
-https://github.com/Amson-tECH/my-portfolio-website.git
+https://github.com/reubenamuzu/my-portfolio-website.git
 
 yaml
 Copy code
