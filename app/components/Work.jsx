@@ -193,7 +193,7 @@ const Work = () => {
                       Details
                     </button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="overflow-y-auto">
+                  <SheetContent side="right" className="overflow-y-auto dark:bg-darkTheme/90 backdrop-blur-sm">
                     <SheetHeader>
                       <SheetTitle className="font-Ovo text-2xl">
                         {project.title}
