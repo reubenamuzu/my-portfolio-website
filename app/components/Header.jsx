@@ -48,7 +48,8 @@ const Header = ({ isDarkMode }) => {
         transition={{ duration: 0.6, delay: 0.7 }}
         className="max-w-2xl mx-auto font-Ovo"
       >
-        I am a Software Developer of two years of experience
+        I am a Software Developer of two years of experience. <br />
+      Do you have a project in mind? Let's work together to bring your ideas to life.
       </motion.p>
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
         <motion.a

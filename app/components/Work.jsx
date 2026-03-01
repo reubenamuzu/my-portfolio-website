@@ -1,31 +1,68 @@
-import React, { useState } from "react";
-import { Send, ArrowRight, X } from "lucide-react";
-import { motion } from "framer-motion";
-import { assets, workData } from "@/assets/assets";
+import React, { useEffect, useMemo, useState } from "react";
+import { motion } from "motion/react";
+import { ExternalLink, Github, Filter } from "lucide-react";
+import Image from "next/image";
+import { workData } from "@/assets/assets";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/app/components/ui/sheet";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/app/components/ui/pagination";
 
-const Work = ({ isDarkMode }) => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [showAll, setShowAll] = useState(false);
+const categories = [
+  "All",
+  "Web Development",
+  "Mobile Development",
+  "Research",
+  "Graphic Design",
+  "Others",
+];
 
-  const displayedProjects = showAll ? workData : workData.slice(0, 4);
+const Work = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 3;
+
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return workData;
+    return workData.filter((project) => project.category === activeCategory);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory]);
+
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const paginatedProjects = useMemo(() => {
+    const start = (currentPage - 1) * projectsPerPage;
+    const end = start + projectsPerPage;
+    return filteredProjects.slice(start, end);
+  }, [filteredProjects, currentPage]);
 
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8 }}
       id="work"
-      className={`w-full px-[12%] py-10 scroll-mt-20 ${
-        isDarkMode ? "dark" : ""
-      }`}
+      className="w-full px-[8%] md:px-[12%] py-14 scroll-mt-20"
     >
       <motion.h4
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className={`text-center mb-2 text-lg font-Ovo ${
-          isDarkMode ? "text-white" : "text-gray-700"
-        }`}
+        transition={{ delay: 0.2, duration: 0.4 }}
+        className="text-center mb-2 text-lg font-Ovo"
       >
         My portfolio
       </motion.h4>
@@ -33,154 +70,265 @@ const Work = ({ isDarkMode }) => {
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className={`text-center text-5xl font-Ovo ${
-          isDarkMode ? "text-white" : "text-gray-900"
-        }`}
+        transition={{ delay: 0.3, duration: 0.4 }}
+        className="text-center text-4xl sm:text-5xl font-Ovo"
       >
-        My latest work
+        Selected Projects
       </motion.h2>
 
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.5 }}
-        className={`text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo ${
-          isDarkMode ? "text-gray-300" : "text-gray-600"
-        }`}
+        transition={{ delay: 0.45, duration: 0.4 }}
+        className="text-center max-w-2xl mx-auto mt-5 mb-10 font-Ovo text-gray-700 dark:text-white/80"
       >
-        Explore a selection of projects that highlight my work in web
-        development, mobile apps, and UI/UX design. Each project reflects my
-        commitment to creating engaging and user-friendly digital experiences.
+        Filter projects by category and explore each one with source code, live
+        demo, and a detailed breakdown.
       </motion.p>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-        className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 my-10 ${
-          isDarkMode ? "dark:text-black" : ""
-        }`}
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.55, duration: 0.4 }}
+        className="mb-10 rounded-2xl border border-gray-300/70 dark:border-white/15 p-4 md:p-5 bg-white/70 dark:bg-darkHover/20 backdrop-blur-sm"
       >
-        {displayedProjects.map((project, index) => (
-          <motion.a
-            key={project.id}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={showAll && index >= 4 ? { opacity: 0, scale: 0.8 } : {}}
-            animate={showAll && index >= 4 ? { opacity: 1, scale: 1 } : {}}
-            transition={{
-              duration: 0.5,
-              delay: index >= 4 ? (index - 4) * 0.1 : 0,
-            }}
-            whileHover={{ scale: 1.05 }}
-            className="aspect-square bg-cover bg-center rounded-lg relative cursor-pointer group overflow-hidden"
-            style={{ backgroundImage: `url(${project.bgImage})` }}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-
-            {/* Animated border on hover - blue/black */}
-            <div
-              className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg border-2 ${
-                isDarkMode ? "border-blue-500" : "border-black"
-              }`}
-            />
-
-            {/* Featured badge */}
-            {project.featured && (
-              <div
-                className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md ${
-                  isDarkMode
-                    ? "bg-white/20 text-white border border-white/30"
-                    : "bg-black/20 text-white border border-white/30"
+        <div className="flex items-center gap-2 mb-3 text-sm font-medium text-gray-600 dark:text-white/70">
+          <Filter className="w-4 h-4" />
+          Filter by category - " {workData.length} " projects
+        </div>
+        <div className="flex flex-wrap gap-2 md:gap-3">
+          {categories.map((category) => {
+            const isActive = category === activeCategory;
+            return (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${
+                  isActive
+                    ? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white"
+                    : "border-gray-300 text-gray-700 hover:bg-lightHover dark:border-white/25 dark:text-white/80 dark:hover:bg-darkHover/50"
                 }`}
               >
-                Featured
-              </div>
-            )}
-
-            {/* Content card at bottom */}
-            <div
-              className={`w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 shadow-lg backdrop-blur-sm ${
-                isDarkMode
-                  ? "bg-slate-800/90 border border-slate-700"
-                  : "bg-white/90 border border-gray-200"
-              }`}
-            >
-              <div>
-                <h2
-                  className={`font-semibold text-sm ${
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  }`}
-                >
-                  {project.title}
-                </h2>
-                <p
-                  className={`text-sm ${
-                    isDarkMode ? "text-gray-400" : "text-gray-700"
-                  }`}
-                >
-                  {project.category}
-                </p>
-              </div>
-
-              <div
-                className={`border rounded-full w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 ${
-                  isDarkMode
-                    ? "border-white bg-slate-700"
-                    : "border-black bg-white"
-                }`}
-              >
-                <Send className="w-4 h-4" />
-              </div>
-            </div>
-
-            {/* Corner sparkle decoration */}
-            <div
-              className={`absolute top-3 right-3 w-8 h-8 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center ${
-                isDarkMode ? "bg-white/10" : "bg-black/10"
-              } backdrop-blur-sm`}
-            >
-              <div className="w-2 h-2 rounded-full bg-white animate-ping" />
-            </div>
-          </motion.a>
-        ))}
+                {category}
+              </button>
+            );
+          })}
+        </div>
       </motion.div>
 
-      <motion.button
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 1.1, duration: 0.5 }}
-        onClick={() => setShowAll(!showAll)}
-        className={`w-max flex items-center justify-center gap-2 border-[0.5px] rounded-full py-3 px-10 mx-auto my-20 hover:-translate-y-1 duration-500 transition-all relative overflow-hidden group ${
-          isDarkMode
-            ? "text-white border-white hover:bg-slate-800 hover:shadow-[0_8px_20px_rgba(255,255,255,0.1)]"
-            : "text-gray-700 border-gray-700 hover:bg-gray-50 hover:shadow-[0_8px_20px_rgba(0,0,0,0.1)]"
-        }`}
-      >
-        {/* Button shine effect */}
-        <div
-          className={`absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ${
-            isDarkMode
-              ? "bg-gradient-to-r from-transparent via-white/10 to-transparent"
-              : "bg-gradient-to-r from-transparent via-gray-900/10 to-transparent"
-          }`}
-        />
+      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {paginatedProjects.map((project, index) => (
+          <motion.article
+            key={project.id}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: index * 0.08 }}
+            className="group overflow-hidden rounded-2xl border border-gray-300/70 dark:border-white/15 bg-white dark:bg-darkHover/10 shadow-sm hover:-translate-y-1 hover:shadow-black/10 dark:hover:shadow-white/10 transition-all duration-300"
+          >
+            <div className="h-52 sm:h-56 w-full relative overflow-hidden">
+              <Image
+                src={project.bgImage}
+                alt={project.title}
+                width={640}
+                height={360}
+                className="h-full w-full object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <span className="inline-flex items-center rounded-full bg-white/20 border border-white/35 px-3 py-1 text-xs text-white backdrop-blur-sm">
+                  {project.category}
+                </span>
+                {project.featured && (
+                  <span className="inline-flex items-center rounded-full bg-black/35 border border-white/35 px-3 py-1 text-xs text-white backdrop-blur-sm">
+                    Featured
+                  </span>
+                )}
+              </div>
+            </div>
 
-        <span className="relative z-10">
-          {showAll ? "Show less" : "Show more"}
-        </span>
-        {showAll ? (
-          <X className="w-4 h-4 transition-transform duration-300 group-hover:rotate-90 relative z-10" />
-        ) : (
-          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
-        )}
-      </motion.button>
-    </motion.div>
+            <div className="p-5">
+              <h3 className="font-semibold text-lg text-gray-900 dark:text-white">
+                {project.title}
+              </h3>
+              <p className="mt-2 text-sm text-gray-600 dark:text-white/75 min-h-12">
+                {project.shortDescription}
+              </p>
+
+              <div className="mt-2 flex flex-wrap gap-1">
+                {project.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs rounded-full border border-gray-300 dark:border-white/20 px-2.5 py-1 text-gray-700 dark:text-white/80 bg-gray-50 dark:bg-black/20"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-1">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex justify-center items-center gap-2 rounded-lg border border-gray-400 dark:border-white/30 px-3 py-2 text-sm font-medium hover:bg-lightHover dark:hover:bg-darkHover/50 transition-colors"
+                >
+                  <Github className="w-6 h-6" />
+                  GitHub
+                </a>
+
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex justify-center items-center gap-2 rounded-lg border border-gray-400 dark:border-white/30 px-3 py-2 text-sm font-medium hover:bg-lightHover dark:hover:bg-darkHover/50 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Live View
+                </a>
+
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <button className="inline-flex justify-center items-center rounded-lg border border-black bg-black text-white dark:border-white dark:bg-white dark:text-black px-3 py-2 text-sm font-medium transition-colors hover:opacity-90">
+                      Details
+                    </button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="overflow-y-auto">
+                    <SheetHeader>
+                      <SheetTitle className="font-Ovo text-2xl">
+                        {project.title}
+                      </SheetTitle>
+                      <SheetDescription className="text-sm">
+                        {project.category}
+                      </SheetDescription>
+                    </SheetHeader>
+
+                    <div className="mt-5 h-44 sm:h-52 w-full rounded-xl overflow-hidden">
+                      <Image
+                        src={project.bgImage}
+                        alt={project.title}
+                        width={640}
+                        height={360}
+                        className="h-full w-full object-cover"
+                        sizes="(max-width: 640px) 100vw, 480px"
+                      />
+                    </div>
+
+                    <div className="mt-5 space-y-4">
+                      <p className="text-sm leading-6 text-gray-700 dark:text-white/80">
+                        {project.longDescription}
+                      </p>
+
+                      <div>
+                        <h4 className="font-semibold text-base mb-2">Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.stack.map((tech) => (
+                            <span
+                              key={`${project.id}-${tech}`}
+                              className="text-xs rounded-full border border-gray-300 dark:border-white/25 px-2.5 py-1 text-gray-700 dark:text-white/80"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 text-sm leading-6 text-gray-700 dark:text-white/80">
+                        <p>
+                          <span className="font-semibold text-gray-900 dark:text-white">
+                            Challenge:
+                          </span>{" "}
+                          {project.details.challenge}
+                        </p>
+                        <p>
+                          <span className="font-semibold text-gray-900 dark:text-white">
+                            Outcome:
+                          </span>{" "}
+                          {project.details.outcome}
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 pt-2">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex justify-center items-center gap-2 rounded-lg border border-gray-400 dark:border-white/30 px-3 py-2 text-sm font-medium hover:bg-lightHover dark:hover:bg-darkHover/50 transition-colors"
+                        >
+                          <Github className="w-4 h-4" />
+                          GitHub
+                        </a>
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex justify-center items-center gap-2 rounded-lg border border-gray-400 dark:border-white/30 px-3 py-2 text-sm font-medium hover:bg-lightHover dark:hover:bg-darkHover/50 transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          Live View
+                        </a>
+                      </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <div className="mt-10">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className="border border-gray-300 dark:border-white/20"
+                />
+              </PaginationItem>
+
+              {Array.from({ length: totalPages }, (_, idx) => idx + 1).map(
+                (page) => (
+                  <PaginationItem key={page}>
+                    <PaginationLink
+                      onClick={() => setCurrentPage(page)}
+                      isActive={page === currentPage}
+                      className={
+                        page === currentPage
+                          ? "border border-black dark:border-white"
+                          : "border border-transparent"
+                      }
+                    >
+                      {page}
+                    </PaginationLink>
+                  </PaginationItem>
+                ),
+              )}
+
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className="border border-gray-300 dark:border-white/20"
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
+
+      {filteredProjects.length === 0 && (
+        <p className="text-center mt-10 text-gray-600 dark:text-white/70">
+          No projects found for this category.
+        </p>
+      )}
+    </motion.section>
   );
 };
 

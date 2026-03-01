@@ -36,6 +36,11 @@ import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
 import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
 import postman from "./postman (1).png";
+import work_1 from "../public/work-1.png";
+import work_2 from "../public/work-2.png";
+import work_3 from "../public/work-3.png";
+import work_4 from "../public/work-4.png";
+import work_5 from "../public/quiz-forge.png";
 
 export const assets = {
   user_image,
@@ -81,71 +86,187 @@ export const assets = {
 export const workData = [
   {
     id: 1,
-    title: "Frontend project",
-    category: "Web Design",
-    bgImage:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    title: "QuizForge",
+    category: "Web Development",
+    bgImage: work_5,
     featured: true,
-    link: "",
+    shortDescription: "AI-powered quiz generation app.",
+    longDescription:
+      "A web app that uses AI to create custom quizzes based on user input topics, with real-time feedback and analytics for learners.",
+    stack: ["React.js", "Tailwind CSS", "Node.js", "Express", "Gemini AI API"],
+    githubUrl: "https://github.com/reubenamuzu/quiz-forge",
+    liveUrl: "https://quizfor-ge.netlify.app",
+    details: {
+      challenge:
+        "Integrating AI-generated content while ensuring quiz quality and relevance.",
+      outcome:
+        "Successfully launched an MVP that provided engaging quizzes with positive user feedback on content quality and learning value.",
+    },
   },
   {
     id: 2,
-    title: "Geo based app",
-    category: "Mobile App",
-    bgImage:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+    title: "GeoField Tracker",
+    category: "Mobile Development",
+    bgImage: work_2,
     featured: true,
-    link: "",
+    shortDescription: "Location-aware mobile app for field data collection.",
+    longDescription:
+      "A cross-platform app used by field agents to capture site visits, upload photos, and log GPS-tagged updates even with unstable connectivity.",
+    stack: ["React Native", "Expo", "Firebase", "Google Maps API"],
+    githubUrl: "https://github.com/your-username/geofield-tracker",
+    liveUrl: "https://expo.dev/preview/geofield-tracker",
+    details: {
+      challenge:
+        "Syncing offline records while preserving data consistency across devices.",
+      outcome:
+        "Enabled reliable offline-first workflows and faster daily report submission.",
+    },
   },
   {
     id: 3,
-    title: "Photography site",
-    category: "Web Design",
-    bgImage:
-      "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600&q=80",
+    title: "UX Benchmark Study",
+    category: "Research",
+    bgImage: work_3,
     featured: true,
-    link: "",
+    shortDescription: "Comparative usability research across fintech onboarding flows.",
+    longDescription:
+      "A structured research project analyzing onboarding friction in fintech products using moderated interviews, heuristic audits, and funnel analysis.",
+    stack: ["Maze", "Figma", "Hotjar", "Notion"],
+    githubUrl: "https://github.com/your-username/ux-benchmark-study",
+    liveUrl: "https://www.figma.com/proto/your-ux-benchmark-study",
+    details: {
+      challenge:
+        "Turning qualitative interview notes into clear, prioritized product recommendations.",
+      outcome:
+        "Produced actionable UX findings that improved completion rates in tested onboarding flows.",
+    },
   },
   {
     id: 4,
-    title: "UI/UX designing",
-    category: "UI/UX Design",
-    bgImage:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80",
+    title: "Brand Identity Kit",
+    category: "Graphic Design",
+    bgImage: work_4,
     featured: true,
-    link: "",
+    shortDescription: "Complete visual identity for a startup launch campaign.",
+    longDescription:
+      "Designed brand guidelines, social templates, and marketing visuals with consistency rules for digital and print output.",
+    stack: ["Figma", "Illustrator", "Photoshop"],
+    githubUrl: "https://github.com/your-username/brand-identity-kit",
+    liveUrl: "https://www.behance.net/your-username/brand-identity-kit",
+    details: {
+      challenge:
+        "Creating a flexible design system that remained cohesive across multiple campaign formats.",
+      outcome:
+        "Delivered reusable templates that accelerated campaign production and improved brand consistency.",
+    },
   },
   {
     id: 5,
-    title: "E-commerce Platform",
-    category: "Web Design",
-    bgImage:
-      "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&q=80",
-    link: "",
+    title: "StoreFront Pro",
+    category: "Web Development",
+    bgImage: work_1,
+    shortDescription: "Modern e-commerce storefront with role-based admin tools.",
+    longDescription:
+      "Built a full-stack e-commerce platform with product management, checkout flow, payment integration, and inventory monitoring for business admins.",
+    stack: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
+    githubUrl: "https://github.com/your-username/storefront-pro",
+    liveUrl: "https://storefront-pro-demo.vercel.app",
+    details: {
+      challenge:
+        "Maintaining checkout reliability while handling asynchronous payment webhooks.",
+      outcome:
+        "Improved conversion and reduced failed checkout events with robust order state handling.",
+    },
   },
   {
     id: 6,
-    title: "Fitness Tracker",
-    category: "Mobile App",
-    bgImage:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
-    link: "",
+    title: "FitPulse Mobile",
+    category: "Mobile Development",
+    bgImage: work_2,
+    shortDescription: "Mobile fitness tracker with routines and progress insights.",
+    longDescription:
+      "A fitness mobile app that supports workout plans, progress charts, and daily reminders with a smooth and lightweight interface.",
+    stack: ["React Native", "TypeScript", "SQLite", "Redux Toolkit"],
+    githubUrl: "https://github.com/your-username/fitpulse-mobile",
+    liveUrl: "https://expo.dev/preview/fitpulse-mobile",
+    details: {
+      challenge:
+        "Visualizing long-term training data in a clear mobile-friendly format.",
+      outcome:
+        "Increased weekly engagement by providing actionable progress summaries.",
+    },
   },
   {
     id: 7,
-    title: "Brand Identity",
-    category: "UI/UX Design",
-    bgImage:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&q=80",
-    link: "",
+    title: "Automation Toolkit",
+    category: "Others",
+    bgImage: work_3,
+    shortDescription: "CLI utilities for code scaffolding and workflow automation.",
+    longDescription:
+      "A set of developer tools that generate starter modules, automate lint/test pipelines, and simplify repetitive project setup tasks.",
+    stack: ["Node.js", "Commander.js", "GitHub Actions"],
+    githubUrl: "https://github.com/your-username/automation-toolkit",
+    liveUrl: "https://www.npmjs.com/package/automation-toolkit-demo",
+    details: {
+      challenge:
+        "Designing command workflows that were flexible but still simple for teams to adopt.",
+      outcome:
+        "Cut onboarding setup time and reduced manual configuration errors across projects.",
+    },
   },
   {
     id: 8,
-    title: "Dashboard Design",
-    category: "Web Design",
-    bgImage:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-    link: "",
+    title: "Market Insight Dashboard",
+    category: "Research",
+    bgImage: work_4,
+    shortDescription: "Research dashboard for trend discovery and reporting.",
+    longDescription:
+      "Designed and developed a dashboard that consolidates survey and behavioral datasets to support faster product decision-making.",
+    stack: ["React", "Recharts", "Supabase", "SQL"],
+    githubUrl: "https://github.com/your-username/market-insight-dashboard",
+    liveUrl: "https://market-insight-demo.vercel.app",
+    details: {
+      challenge:
+        "Presenting dense datasets in a way that non-technical stakeholders can interpret quickly.",
+      outcome:
+        "Improved reporting turnaround with clearer visualization and export-ready summaries.",
+    },
+  },
+  {
+    id: 9,
+    title: "Market Insight Dashboard",
+    category: "Research",
+    bgImage: work_4,
+    shortDescription: "Research dashboard for trend discovery and reporting.",
+    longDescription:
+      "Designed and developed a dashboard that consolidates survey and behavioral datasets to support faster product decision-making.",
+    stack: ["React", "Recharts", "Supabase", "SQL"],
+    githubUrl: "https://github.com/your-username/market-insight-dashboard",
+    liveUrl: "https://market-insight-demo.vercel.app",
+    details: {
+      challenge:
+        "Presenting dense datasets in a way that non-technical stakeholders can interpret quickly.",
+      outcome:
+        "Improved reporting turnaround with clearer visualization and export-ready summaries.",
+    },
+  },
+  {
+    id: 10,
+    title: "Market Insight Dashboard",
+    category: "Research",
+    bgImage: work_4,
+    shortDescription: "Research dashboard for trend discovery and reporting.",
+    longDescription:
+      "Designed and developed a dashboard that consolidates survey and behavioral datasets to support faster product decision-making.",
+    stack: ["React", "Recharts", "Supabase", "SQL"],
+    githubUrl: "https://github.com/your-username/market-insight-dashboard",
+    liveUrl: "https://market-insight-demo.vercel.app",
+    details: {
+      challenge:
+        "Presenting dense datasets in a way that non-technical stakeholders can interpret quickly.",
+      outcome:
+        "Improved reporting turnaround with clearer visualization and export-ready summaries.",
+    },
   },
 
   // {
