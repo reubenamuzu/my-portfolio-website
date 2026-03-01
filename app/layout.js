@@ -14,8 +14,51 @@ const ovo = OvoFont({
 });
 
 export const metadata = {
-  title: "Reuben Korsi Amuzu | Portfolio",
-  description: "",
+  title: {
+    default: "Reuben Korsi Amuzu | Software Developer",
+    template: "%s | Reuben Korsi Amuzu",
+  },
+  description:
+    "Reuben Korsi Amuzu is a backend-focused developer and fintech enthusiast building scalable, secure web and mobile applications using Next.js, React, and Node.js.",
+  keywords: [
+    "Reuben Korsi Amuzu",
+    "Backend Developer Ghana",
+    "Fintech Developer",
+    "Next.js Developer",
+    "React Developer",
+    "Node.js Developer",
+    "Software Engineer Ghana",
+  ],
+  authors: [{ name: "Reuben Korsi Amuzu" }],
+  creator: "Reuben Korsi Amuzu",
+  metadataBase: new URL("https://reubenkorsiamuzu.tech"),
+
+  openGraph: {
+    title: "Reuben Korsi Amuzu | Software Developer",
+    description:
+      "Software Developer building scalable, secure web and mobile applications.",
+    url: "https://reubenkorsiamuzu.tech",
+    siteName: "Reuben Korsi Amuzu Portfolio",
+    images: [
+      {
+        url: "/public/preview.png", // Add a 1200x630 image in your public folder
+        width: 1200,
+        height: 630,
+        alt: "Reuben Korsi Amuzu Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Reuben Korsi Amuzu | Software Developer",
+    description:
+      "Software Developer building scalable, secure web and mobile applications.",
+    images: ["/public/preview.png"],
+  },
+
   icons: {
     icon: "/favicon.ico",
   },
