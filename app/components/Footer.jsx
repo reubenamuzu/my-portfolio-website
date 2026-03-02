@@ -26,7 +26,7 @@ const Footer = ({isDarkMode}) => {
           <FaLinkedinIn className="text-2xl text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors" />
         </a>
         <a
-          href="https://github.com/Amson-tECH"
+          href="https://github.com/reubenamuzu"
           target="_blank"
           rel="noopener noreferrer"
           className="p-3 rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"

@@ -165,6 +165,7 @@ export const workData = [
     title: "StoreFront Pro",
     category: "Web Development",
     bgImage: work_1,
+    featured: false,
     shortDescription: "Modern e-commerce storefront with role-based admin tools.",
     longDescription:
       "Built a full-stack e-commerce platform with product management, checkout flow, payment integration, and inventory monitoring for business admins.",
@@ -183,6 +184,7 @@ export const workData = [
     title: "FitPulse Mobile",
     category: "Mobile Development",
     bgImage: work_2,
+    featured: false,
     shortDescription: "Mobile fitness tracker with routines and progress insights.",
     longDescription:
       "A fitness mobile app that supports workout plans, progress charts, and daily reminders with a smooth and lightweight interface.",
@@ -201,6 +203,7 @@ export const workData = [
     title: "Automation Toolkit",
     category: "Others",
     bgImage: work_3,
+    featured: false,
     shortDescription: "CLI utilities for code scaffolding and workflow automation.",
     longDescription:
       "A set of developer tools that generate starter modules, automate lint/test pipelines, and simplify repetitive project setup tasks.",
@@ -219,6 +222,7 @@ export const workData = [
     title: "Market Insight Dashboard",
     category: "Research",
     bgImage: work_4,
+    featured: false,
     shortDescription: "Research dashboard for trend discovery and reporting.",
     longDescription:
       "Designed and developed a dashboard that consolidates survey and behavioral datasets to support faster product decision-making.",
@@ -237,6 +241,7 @@ export const workData = [
     title: "Market Insight Dashboard",
     category: "Research",
     bgImage: work_4,
+    featured: false,
     shortDescription: "Research dashboard for trend discovery and reporting.",
     longDescription:
       "Designed and developed a dashboard that consolidates survey and behavioral datasets to support faster product decision-making.",
@@ -255,6 +260,7 @@ export const workData = [
     title: "Market Insight Dashboard",
     category: "Research",
     bgImage: work_4,
+    featured: true,
     shortDescription: "Research dashboard for trend discovery and reporting.",
     longDescription:
       "Designed and developed a dashboard that consolidates survey and behavioral datasets to support faster product decision-making.",
@@ -268,33 +274,12 @@ export const workData = [
         "Improved reporting turnaround with clearer visualization and export-ready summaries.",
     },
   },
-
-  // {
-  //   title: "Frontend project",
-  //   description: "Web Design",
-  //   bgImage: "/work-1.png",
-  // },
-  // {
-  //   title: "Geo based app",
-  //   description: "Mobile App",
-  //   bgImage: "/work-2.png",
-  // },
-  // {
-  //   title: "Photography site",
-  //   description: "Web Design",
-  //   bgImage: "/work-3.png",
-  // },
-  // {
-  //   title: "UI/UX designing",
-  //   description: "UI/UX Design",
-  //   bgImage: "/work-4.png",
-  // },
 ];
 
 export const serviceData = [
   {
     icon: assets.web_icon,
-    title: "Web design",
+    title: "Web Development",
     description: "Responsive web development with modern tools and clean UI.",
     link: "",
   },

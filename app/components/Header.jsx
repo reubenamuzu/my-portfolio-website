@@ -75,7 +75,7 @@ const Header = ({ isDarkMode }) => {
               {/* ✅ Image must be a sibling of the text, not wrapped separately */}
               <Image src={assets.download_icon} alt="" className="w-4" />
             </DialogTrigger>
-            <DialogContent className="dark:bg-darkTheme">
+            <DialogContent className="dark:bg-darkTheme dark:border-darkHover">
               <DialogHeader>
                 <DialogTitle>Want My Resume?</DialogTitle>
               </DialogHeader>
