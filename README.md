@@ -1,6 +1,6 @@
-# Reuben's Portfolio
+# My Portfolio
 
-This is a portfolio website for Reuben Korsi Amuzu, a Software Developer based in Ghana.
+
 
 ## About Me
 
