@@ -15,7 +15,7 @@ const ICONS: Record<SocialId, IconType> = {
 export default function Footer() {
   return (
     <footer className="mt-10 border-t border-line bg-bg-deep/70">
-      <div className="shell flex flex-col items-center gap-7 py-10 md:flex-row md:justify-between">
+      <div className="shell flex flex-col items-center gap-7 pb-24 pt-10 md:flex-row md:justify-between">
         <div className="text-center md:text-left">
           <p className="logo">
             AMSON

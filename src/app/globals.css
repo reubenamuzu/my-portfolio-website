@@ -1090,7 +1090,226 @@
     animation: blink 1.05s steps(1, end) infinite;
   }
 
-  /* ---- Footer ------------------------------------------------------------- */
+  /* ---- Ask Amson terminal ------------------------------------------------
+     Reuses .terminal-bar, .terminal-dot, .bracket, .prompt, .caret and .chip. */
+  .ask {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-deep);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--cyan) 10%, transparent);
+  }
+  .ask-screen {
+    position: relative;
+    display: flex;
+    min-height: 0;
+  }
+  .ask-log {
+    flex: 1;
+    height: 20rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 1rem;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.84rem;
+    line-height: 1.75;
+    scrollbar-color: var(--border-strong) transparent;
+    scrollbar-width: thin;
+  }
+  @media (min-width: 640px) {
+    .ask-log {
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+  /* Faint scan lines over the screen. They never block clicks or scrolling. */
+  .ask-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0.035) 0 1px,
+      transparent 1px 4px
+    );
+  }
+  .ask-welcome {
+    color: var(--muted);
+  }
+  .ask-line {
+    margin-top: 0.7rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .ask-user {
+    color: var(--heading);
+  }
+  .ask-notice {
+    color: var(--magenta);
+  }
+  .ask-offline {
+    padding: 0.1rem 0.45rem;
+    border: 1px solid color-mix(in srgb, var(--magenta) 60%, transparent);
+    color: var(--magenta);
+    font-size: 0.6rem;
+  }
+  .ask-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+  }
+  @media (min-width: 640px) {
+    .ask-chips {
+      padding-inline: 1.5rem;
+    }
+  }
+  .ask-chip {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.74rem;
+    text-align: left;
+  }
+  .ask-form {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.75rem 0.55rem 1rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono), ui-monospace, monospace;
+    transition: box-shadow 0.25s var(--ease);
+  }
+  /* The whole input row lights up when the field has focus. */
+  .ask-form:focus-within {
+    box-shadow: inset 0 0 0 1px var(--cyan);
+  }
+  .ask-input {
+    flex: 1;
+    min-width: 0;
+    min-height: 2.5rem;
+    background: transparent;
+    color: var(--heading);
+    caret-color: var(--cyan);
+    /* 16px stops phones zooming in when the field is tapped. */
+    font-size: 1rem;
+    outline: none;
+  }
+  .ask-input::placeholder {
+    color: var(--muted);
+    opacity: 0.75;
+  }
+  @media (min-width: 640px) {
+    .ask-input {
+      font-size: 0.9rem;
+    }
+  }
+  .ask-send {
+    flex: none;
+    min-height: 2.5rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    transition:
+      background-color 0.25s var(--ease),
+      box-shadow 0.25s var(--ease);
+  }
+  .ask-send:hover {
+    background: color-mix(in srgb, var(--cyan) 14%, transparent);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--cyan) 45%, transparent);
+  }
+  .ask-hint {
+    min-height: 1.5rem;
+    padding: 0.15rem 1rem 0.4rem;
+    color: var(--muted);
+    font-size: 0.62rem;
+  }
+
+  /* Floating button that opens the drawer. */
+  .ask-launcher {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    min-height: 2.75rem;
+    padding: 0.6rem 0.95rem;
+    border: 1px solid var(--cyan);
+    background: color-mix(in srgb, var(--bg-deep) 92%, transparent);
+    color: var(--cyan);
+    font-size: 0.7rem;
+    box-shadow: 0 0 16px color-mix(in srgb, var(--cyan) 45%, transparent);
+    animation: pulse-glow 2.6s var(--ease) infinite;
+    transition:
+      transform 0.25s var(--ease),
+      background-color 0.25s var(--ease);
+  }
+  .ask-launcher:hover {
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--cyan) 14%, var(--bg-deep));
+  }
+  @media (min-width: 640px) {
+    .ask-launcher {
+      right: 1.5rem;
+      bottom: 1.5rem;
+    }
+  }
+
+  /* Drawer: a native <dialog> pinned to the right edge. */
+  .ask-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(100vw, 30rem);
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-left: 1px solid var(--border-strong);
+    background: var(--bg-deep);
+    color: var(--text);
+    overflow: hidden;
+  }
+  .ask-drawer[open] {
+    animation: drawer-in 0.35s var(--ease);
+  }
+  .ask-drawer::backdrop {
+    background: rgb(7 8 10 / 0.72);
+    backdrop-filter: blur(2px);
+  }
+  .ask-drawer-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .ask-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  /* Inside the drawer the terminal fills the height and loses its own frame. */
+  .ask-drawer .ask {
+    flex: 1;
+    min-height: 0;
+    border: 0;
+    box-shadow: none;
+  }
+  .ask-drawer .bracket {
+    display: none;
+  }
+  .ask-drawer .ask-screen {
+    flex: 1;
+  }
+  .ask-drawer .ask-log {
+    height: auto;
+  }
+  /* The page behind does not scroll while the drawer is open. */
+  html:has(.ask-drawer[open]) {
+    overflow: hidden;
+  }
+
+  /* ---- Footer------------------------------------------------------------- */
   .social {
     display: inline-grid;
     place-items: center;
@@ -1284,6 +1503,14 @@
     transform: none;
   }
 }
+@keyframes drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
 @keyframes portrait-scan {
   0% {
     transform: translateY(-100%);
@@ -1351,5 +1578,12 @@
   }
   .boot {
     display: none !important;
+  }
+  /* No scan lines over the terminal, and the launcher does not lift. */
+  .ask-lines {
+    display: none;
+  }
+  .ask-launcher:hover {
+    transform: none;
   }
 }
