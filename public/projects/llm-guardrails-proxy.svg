@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="LLM GUARDRAILS PROXY placeholder cover">
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0H0V50" fill="none" stroke="#ffffff" stroke-opacity="0.045"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.38" r="0.7">
+      <stop offset="0" stop-color="#ff2bd6" stop-opacity="0.3"/>
+      <stop offset="0.7" stop-color="#ff2bd6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#0c0e11"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#ff2bd6" stroke-opacity="0.28" stroke-width="2">
+    <circle cx="800" cy="340" r="250"/><circle cx="800" cy="340" r="170"/>
+    <path d="M470 340h660M800 60v560"/>
+  </g>
+  <rect x="740" y="232" width="120" height="10" fill="#ff2bd6"/>
+  <text x="800" y="345" text-anchor="middle" fill="#eef0f2" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="6">LLM GUARDRAILS PROXY</text>
+  <text x="800" y="405" text-anchor="middle" fill="#ff2bd6" font-family="Consolas, Menlo, monospace" font-size="32" letter-spacing="5">TOOLS / LLM GATEWAY</text>
+  <text x="800" y="462" text-anchor="middle" fill="#a7aeb6" font-family="Consolas, Menlo, monospace" font-size="24" letter-spacing="4">PLACEHOLDER COVER</text>
+</svg>
