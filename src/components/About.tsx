@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { IconType } from "react-icons";
 import { LuCreditCard, LuDatabaseZap, LuLibrary } from "react-icons/lu";
 import {
@@ -22,6 +21,7 @@ import {
   stack,
   type StackIcon,
 } from "@/data/site";
+import Portrait from "./Portrait";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 
@@ -53,7 +53,7 @@ export default function About() {
 
       {/* Bio + portrait */}
       <Reveal>
-        <div className="grid items-start gap-10 lg:grid-cols-[1fr_18rem]">
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_21rem]">
           <div className="max-w-2xl space-y-5 text-base sm:text-lg">
             {bio.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -63,17 +63,8 @@ export default function About() {
             </p>
           </div>
 
-          <div className="accent-lime relative mx-auto w-full max-w-[18rem] border border-line bg-surface-1 p-2">
-            <span className="bracket bracket-tl" aria-hidden="true" />
-            <span className="bracket bracket-br" aria-hidden="true" />
-            <Image
-              src="/images/portrait.png"
-              alt={`Portrait of ${site.name}`}
-              width={800}
-              height={1076}
-              sizes="(min-width: 1024px) 272px, 272px"
-              className="h-auto w-full"
-            />
+          <div className="mx-auto w-full max-w-[21rem] px-2 lg:px-0">
+            <Portrait />
           </div>
         </div>
       </Reveal>
