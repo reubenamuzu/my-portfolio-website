@@ -2,7 +2,7 @@ import type { IconType } from "react-icons";
 import { FaGithub, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
 import { LuArrowUp } from "react-icons/lu";
 import { accentFor } from "@/data/projects";
-import { site, socials, type SocialId } from "@/data/site";
+import { site, socials, type SocialId } from "@/data/profile";
 
 const ICONS: Record<SocialId, IconType> = {
   github: FaGithub,

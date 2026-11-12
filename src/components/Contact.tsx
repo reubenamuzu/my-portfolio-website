@@ -1,4 +1,4 @@
-import { site, socials } from "@/data/site";
+import { site, socials } from "@/data/profile";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";
 

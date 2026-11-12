@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Exo_2, JetBrains_Mono, Orbitron } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { bootScript } from "@/components/BootIntro";
-import { site, socials } from "@/data/site";
+import { site, socials } from "@/data/profile";
 import "./globals.css";
 
 // next/font downloads these at build time and serves them from this site.

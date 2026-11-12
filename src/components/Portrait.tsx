@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { site } from "@/data/site";
+import { site } from "@/data/profile";
 
 /** How far the card tilts toward the cursor, in degrees. */
 const MAX_TILT = 9;

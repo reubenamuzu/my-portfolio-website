@@ -1,4 +1,4 @@
-import { site } from "@/data/site";
+import { site } from "@/data/profile";
 import TileWall from "./TileWall";
 
 export default function Hero() {
