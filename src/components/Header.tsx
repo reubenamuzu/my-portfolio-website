@@ -28,7 +28,10 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header id="top" className="site-header">
+    // No id="top" here on purpose. The header is sticky, so it is always in view and
+    // the browser would not scroll to it. With no element named "top", a link to
+    // #top scrolls to the very top of the page, which is what Home and the footer need.
+    <header className="site-header">
       <div className="shell flex h-full items-center justify-between">
         <a href="#top" className="logo">
           AMSON
