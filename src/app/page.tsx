@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import AskSection from "@/components/ask/AskSection";
 import BootIntro from "@/components/BootIntro";
 import Contact from "@/components/Contact";
 import FeaturedProjects from "@/components/FeaturedProjects";
@@ -17,6 +18,7 @@ export default function Home() {
         <FeaturedProjects />
         <ProjectGrid />
         <About />
+        <AskSection />
         <Contact />
       </main>
       <Footer />

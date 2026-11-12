@@ -20,7 +20,7 @@ import {
   site,
   stack,
   type StackIcon,
-} from "@/data/site";
+} from "@/data/profile";
 import Portrait from "./Portrait";
 import Reveal from "./Reveal";
 import SectionTitle from "./SectionTitle";

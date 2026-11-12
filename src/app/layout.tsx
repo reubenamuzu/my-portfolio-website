@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Exo_2, JetBrains_Mono, Orbitron } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import AskLauncher from "@/components/ask/AskLauncher";
 import { bootScript } from "@/components/BootIntro";
-import { site, socials } from "@/data/site";
+import { site, socials } from "@/data/profile";
 import "./globals.css";
 
 // next/font downloads these at build time and serves them from this site.
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {children}
+        <AskLauncher />
         <Analytics />
       </body>
     </html>

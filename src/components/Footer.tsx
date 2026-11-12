@@ -2,7 +2,7 @@ import type { IconType } from "react-icons";
 import { FaGithub, FaInstagram, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa6";
 import { LuArrowUp } from "react-icons/lu";
 import { accentFor } from "@/data/projects";
-import { site, socials, type SocialId } from "@/data/site";
+import { site, socials, type SocialId } from "@/data/profile";
 
 const ICONS: Record<SocialId, IconType> = {
   github: FaGithub,
@@ -15,7 +15,7 @@ const ICONS: Record<SocialId, IconType> = {
 export default function Footer() {
   return (
     <footer className="mt-10 border-t border-line bg-bg-deep/70">
-      <div className="shell flex flex-col items-center gap-7 py-10 md:flex-row md:justify-between">
+      <div className="shell flex flex-col items-center gap-7 pb-24 pt-10 md:flex-row md:justify-between">
         <div className="text-center md:text-left">
           <p className="logo">
             AMSON

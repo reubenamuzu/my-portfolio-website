@@ -1,5 +1,13 @@
 /**
- * Site-wide details: name, links, stack, leadership.
+ * EVERYTHING ABOUT YOU LIVES HERE: name, bio, links, stack, leadership,
+ * certifications, contact and availability.
+ *
+ * Two things read this file:
+ *   1. the website (Hero, About, Contact, Footer, SEO)
+ *   2. the "Ask Amson" assistant, which builds its knowledge from this file
+ *      plus projects.ts
+ *
+ * So when you edit a value here, the page and the assistant both update.
  * Anything marked "TODO" is a placeholder for you to fill in.
  */
 
@@ -103,3 +111,37 @@ export const education = {
   school: "KNUST, Kumasi",
   note: "Mastercard Foundation Scholar",
 } as const;
+
+/**
+ * What you are open to right now. The assistant uses this to answer questions
+ * like "Is he open to internships?".
+ *
+ * While `summary` is null the assistant says it has no availability details
+ * and points people to the contact section, so it never guesses for you.
+ */
+export const availability: {
+  /** One or two sentences, written about you in the third person. */
+  summary: string | null;
+  /** Short labels, e.g. "Internships", "Freelance projects", "Collaborations". */
+  openTo: string[];
+} = {
+  summary: null, // TODO: e.g. "Reuben is open to software engineering internships from June 2027."
+  openTo: [], // TODO: e.g. ["Internships", "Freelance projects"]
+};
+
+/** How people should reach you. Used by the assistant and its /contact command. */
+export const contact = {
+  email: site.email,
+  /** The channel you check most. */
+  preferred: "Email",
+  /** Optional: how quickly you usually reply, or null to leave it out. */
+  responseTime: null as string | null, // TODO: e.g. "Usually replies within two days"
+} as const;
+
+/**
+ * Extra facts the assistant may share that do not appear elsewhere on the site.
+ * One short sentence each, in the third person. Leave empty if there are none.
+ */
+export const extraFacts: string[] = [
+  "Reuben is the founder of AmsonTech, where he publishes tech content on YouTube, TikTok and Instagram.",
+];

@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { site } from "@/data/site";
+import { site } from "@/data/profile";
 
 // The share image shown when the site is linked on social media or in chat apps.
 // It is drawn from code at build time, so it always matches the site colours.
